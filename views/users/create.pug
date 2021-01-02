@@ -1,0 +1,26 @@
+extends ../layout/common_layout.pug
+
+block content
+  .row.mt-4
+    form(action='/users/create', method='post')
+      .mb-3
+        label.form-label(for='full_name') Full Name
+        input#full_name.form-control(type='text', name='full_name')
+      .mb-3
+        label.form-label(for='age') Age
+        input#age.form-control(type='number', name='age')
+      .mb-3
+        .form-check
+          input#female.form-check-input(type='radio', name='sex', checked='',
+          value='Female')
+          label.form-check-label(for='female')
+            | Female
+        .form-check
+          input#male.form-check-input(type='radio', name='sex', value='Male')
+          label.form-check-label(for='male')
+            | Male
+      .mb-3
+        label.form-label(for='mail') Mail address
+        input#mail.form-control(type='text', name='mail')
+
+      button.btn.btn-primary(type='submit') Submit

@@ -1,0 +1,7 @@
+extends ../layout/common_layout.pug
+
+block content
+  .row.mt-4
+    ul
+      each val, key in user
+        li= key+": "+val

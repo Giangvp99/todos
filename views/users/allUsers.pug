@@ -1,0 +1,26 @@
+extend ../layout/common_layout.pug
+
+block content
+  .row.pt-5
+    table.col-12.table.table-striped.table-hover.table-bordered
+      thead
+        tr
+          each val, key in data[0]
+            th= key
+          th(colspan='2') Actions
+      tbody
+        each user in data
+          tr
+            - var _id
+            each val,key in user
+              if key=="id"
+                th=val
+                - _id=val
+              else 
+                td=val
+            td
+              a.btn.btn-primary(href=""+_id) View
+            td
+              a.btn.btn-danger(href=""+_id, method="delete") Delete
+    .col-12.mt-5
+      a.col-2.btn.btn-primary(href="/users/create") Create
