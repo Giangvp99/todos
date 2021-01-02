@@ -5,9 +5,14 @@ module.exports = {
     res.json(db);
   },
   getUserById: (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
     const user = db.get("users").find({ id: id }).value();
-    console.log(user);
+    console.log("Hi");
     res.json(user);
   },
+  createUser: (req, res) => {
+    res.send("Hi from page create new user");
+  },
+  createUserPost: (req, res)=>{
+  }
 };
