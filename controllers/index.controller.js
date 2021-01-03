@@ -1,5 +1,5 @@
 module.exports = {
   index: (req, res) => {
-    res.render('index');
+    res.json("Hello from index")
   },
 };

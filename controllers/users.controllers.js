@@ -2,28 +2,18 @@ const db = require("../db");
 
 module.exports = {
   index: (req, res) => {
-    const title = "Index page";
-    res.render("users/index", { title: title });
+    res.json("Hello from index of url user/");
   },
   getAllUsers: (req, res) => {
-    const title = "All users";
-    res.render("users/allUsers", {
-      data: db.get("users").value(),
-      title: title,
-    });
+    res.json(db.get("users").value());
   },
   getUserById: (req, res) => {
     const id = parseInt(req.params.id);
     const user = db.get("users").find({ id: id }).value();
-    res.render("users/info", {
-      user: user,
-      title: "Information",
-    });
+    res.json(user);
   },
   createUser: (req, res) => {
-    res.render("users/create", {
-      title: "Create user",
-    });
+    res.json("Hello from create user");
   },
   createUserPost: (req, res) => {
     let id = db.get("users").value().length + 1;
@@ -34,9 +24,6 @@ module.exports = {
   deleteUserById: (req, res) => {
     let id = parseInt(req.params.id);
     db.get("users").remove({ id: id }).write();
-    res.render("users/allUsers", {
-      data: db.get("users").value(),
-      title: "All users",
-    });
+    res.json(db.get("users").value());
   },
 };
